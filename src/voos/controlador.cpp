@@ -119,10 +119,55 @@ int Controlador::contarAeroportoQueNaoEhOrigem()
     return numeroAeroportos;
 }
 
+bool Controlador::componenteTemEntrada(kosaraju::ComponenteFortementeConexa componente)
+{
+    bool temEntrada = false;
+    std::list<int> *listaDeEntrada = this->grafo.obterListaDeEntrada();
+    for (int vertice : componente.vertices)
+    {
+        for (int verticeEntrada : listaDeEntrada[vertice])
+        {
+            if (!componenteTemVertice(componente, verticeEntrada))
+            {
+                temEntrada = true;
+            }
+        }
+    }
+
+    return temEntrada;
+}
+
+bool Controlador::componenteTemSaida(kosaraju::ComponenteFortementeConexa componente)
+{
+    bool temSaida = false;
+
+    std::list<int> *listaDeSaida = this->grafo.obterListaDeSaida();
+    for (int vertice : componente.vertices)
+    {
+        for (int verticeSaida : listaDeSaida[vertice])
+        {
+            if (!componenteTemVertice(componente, verticeSaida))
+            {
+                temSaida = true;
+            }
+        }
+    }
+
+    return temSaida;
+}
+
 int Controlador::obterMaiorNumeroAeroportos()
 {
-    int naoEhOrigem = this->contarAeroportoQueNaoEhOrigem();
-    int naoEhDestino = this->contarAeroportoQueNaoEhDestino();
+    int naoEhOrigem = 0;
+    int naoEhDestino = 0;
+
+    for (kosaraju::ComponenteFortementeConexa componente : *this->grafo.obterComponentesConexas())
+    {
+        if (!componenteTemEntrada(componente))
+            naoEhDestino++;
+        if (!componenteTemSaida(componente))
+            naoEhOrigem++;
+    }
 
     if (naoEhOrigem > naoEhDestino)
     {
@@ -139,8 +184,6 @@ int Controlador::contarMinimoNumeroVoosAdicionar()
         return 0;
     }
 
-    this->inserirArestasParaFormarDAG();
 
-
-    return this->obterMaiorNumeroAeroportos() + this->numeroNovosVoosAdicionados;
+    return this->obterMaiorNumeroAeroportos();
 }

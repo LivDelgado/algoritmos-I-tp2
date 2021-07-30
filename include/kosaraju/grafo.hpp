@@ -14,8 +14,11 @@ namespace kosaraju
     {
         private:
             int numeroDeVertices;
-            std::list<int> *listaDeSaida;
-            std::list<int> *listaDeEntrada;
+
+            // esses vetores contém <numeroDeVertices> posições, em que cada posição é uma lista de vértices
+            std::list<int> *listaDeSaida; // aqui ele sai do índice e vai pros vértices da lista
+            std::list<int> *listaDeEntrada; // aqui ele sai dos vértices da lista e vai pro index
+
             bool *verticesVisitados;
 
             std::vector<ComponenteFortementeConexa> componentesConexas;

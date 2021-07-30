@@ -14,14 +14,11 @@ using namespace std;
 int main()
 {
     leitura::GeradorGrafo geradorGrafo = leitura::GeradorGrafo();
-    kosaraju::Grafo grafo = geradorGrafo.gerarGrafo();
 
-    cout << "Strongly Connected Components:\n";
+    kosaraju::Grafo grafo = geradorGrafo.gerarGrafo();
     grafo.mapearComponentesConexas();
-    grafo.imprimirComponentes();
 
     voos::Controlador controlador(grafo);
 
-    cout << "Mínimo de arestas" << endl;
     cout << controlador.contarMinimoNumeroVoosAdicionar() << endl;
 }

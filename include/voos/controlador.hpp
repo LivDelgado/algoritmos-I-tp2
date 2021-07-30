@@ -26,7 +26,10 @@ namespace voos
             int obterMaiorNumeroAeroportos();
 
             bool todosOsVerticesEstaoNaComponente(std::list<int> vertices, kosaraju::ComponenteFortementeConexa componente);
+            
             bool componenteTemVertice(kosaraju::ComponenteFortementeConexa componente, int vertice);
+            bool componenteTemEntrada(kosaraju::ComponenteFortementeConexa componente);
+            bool componenteTemSaida(kosaraju::ComponenteFortementeConexa componente);
 
         public:
             Controlador(kosaraju::Grafo grafo);
