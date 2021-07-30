@@ -34,7 +34,7 @@ namespace kosaraju
 
             bool adicionarAresta(int origem, int destino);
             void mapearComponentesConexas();
-            void imprimirComponentes();
+            void imprimirComponentes(); // não é utilizada, mas vou deixar como referência
 
             Grafo obterGrafoTransposto();
             int obterNumeroVertices();

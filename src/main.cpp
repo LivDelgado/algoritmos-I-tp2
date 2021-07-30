@@ -1,5 +1,3 @@
-// Kosaraju'origem algorithm to find strongly connected components in C++
-
 #include <iostream>
 #include <list>
 #include <stack>
@@ -9,7 +7,6 @@
 #include "leitura/geradorGrafo.hpp"
 
 using namespace std;
-
 
 int main()
 {
