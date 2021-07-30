@@ -18,10 +18,15 @@ namespace voos
 
             void inserirArestasParaFormarDAG();
 
+            kosaraju::ComponenteFortementeConexa obterComponenteQueTemVertice(int vertice);
+
             int contarAeroportoQueNaoEhOrigem();
             int contarAeroportoQueNaoEhDestino();
 
             int obterMaiorNumeroAeroportos();
+
+            bool todosOsVerticesEstaoNaComponente(std::list<int> vertices, kosaraju::ComponenteFortementeConexa componente);
+            bool componenteTemVertice(kosaraju::ComponenteFortementeConexa componente, int vertice);
 
         public:
             Controlador(kosaraju::Grafo grafo);

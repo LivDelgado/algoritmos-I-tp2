@@ -42,6 +42,37 @@ void Controlador::inserirArestasParaFormarDAG()
     }
 }
 
+bool Controlador::componenteTemVertice(kosaraju::ComponenteFortementeConexa componente, int vertice)
+{
+    return std::find(componente.vertices.begin(), componente.vertices.end(), vertice) != componente.vertices.end();
+}
+
+kosaraju::ComponenteFortementeConexa Controlador::obterComponenteQueTemVertice(int vertice)
+{
+    for (kosaraju::ComponenteFortementeConexa componente : *this->grafo.obterComponentesConexas())
+    {
+        if (componenteTemVertice(componente, vertice))
+        {
+            return componente;
+        }
+    }
+
+    return kosaraju::ComponenteFortementeConexa();
+}
+
+bool Controlador::todosOsVerticesEstaoNaComponente(std::list<int> vertices, kosaraju::ComponenteFortementeConexa componente)
+{
+    for (int vertice : vertices)
+    {
+        if (!componenteTemVertice(componente, vertice))
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 int Controlador::contarAeroportoQueNaoEhDestino()
 {
     std::list<int> *listaDeEntrada = this->grafo.obterListaDeEntrada();
@@ -50,7 +81,13 @@ int Controlador::contarAeroportoQueNaoEhDestino()
 
     for (int origem = 0; origem < this->grafo.obterNumeroVertices(); origem++)
     {
-        if (listaDeEntrada[origem].size() == 0)
+        // se não tiver destino ou se tiver e fizer parte de componente
+
+        // obter componente que tem vertice
+        // verificar se tem algum que não é parte da componente -> se sim, não incrementa
+        kosaraju::ComponenteFortementeConexa componenteQueTemVertice = obterComponenteQueTemVertice(origem);
+        if (listaDeEntrada[origem].size() == 0 || 
+           !todosOsVerticesEstaoNaComponente(listaDeEntrada[origem], componenteQueTemVertice))
         {
             numeroAeroportos++;
         }
@@ -67,7 +104,13 @@ int Controlador::contarAeroportoQueNaoEhOrigem()
 
     for (int origem = 0; origem < this->grafo.obterNumeroVertices(); origem++)
     {
-        if (listaDeSaida[origem].size() == 0)
+        // se não tiver destino ou se tiver e fizer parte de componente
+
+        // obter componente que tem vertice
+        // verificar se tem algum que não é parte da componente -> se sim, não incrementa
+        kosaraju::ComponenteFortementeConexa componenteQueTemVertice = obterComponenteQueTemVertice(origem);
+        if (listaDeSaida[origem].size() == 0 || 
+           !todosOsVerticesEstaoNaComponente(listaDeSaida[origem], componenteQueTemVertice))
         {
             numeroAeroportos++;
         }
