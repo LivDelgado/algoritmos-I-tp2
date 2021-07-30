@@ -7,7 +7,7 @@ namespace kosaraju {
     class ComponenteFortementeConexa
     {
         public:
-            std::vector<int> *vertices;
+            std::vector<int> vertices;
 
             ComponenteFortementeConexa();
 

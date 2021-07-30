@@ -7,7 +7,8 @@
 
 #include "kosaraju/scc.hpp"
 
-namespace kosaraju {
+namespace kosaraju 
+{
     class Grafo
     {
         private:
@@ -16,7 +17,7 @@ namespace kosaraju {
             std::list<int> *listaDeEntrada;
             bool *verticesVisitados;
 
-            std::vector<ComponenteFortementeConexa> *componentesConexas;
+            std::vector<ComponenteFortementeConexa> componentesConexas;
 
             void percorrerOrdemGrafo(int origem, bool verticesVisitados[], std::stack<int> &pilhaVerticesConectadosAVerticesJaExplorados);
             void DFS(int origem, bool verticesVisitados[], ComponenteFortementeConexa &componente);
@@ -25,12 +26,17 @@ namespace kosaraju {
 
         public:
             Grafo(int numeroDeVertices);
+            Grafo();
 
             void adicionarAresta(int origem, int destino);
             void mapearComponentesConexas();
             void imprimirComponentes();
 
             Grafo obterGrafoTransposto();
+            int obterNumeroVertices();
+            std::list<int> *obterListaDeSaida();
+            std::list<int> *obterListaDeEntrada();
+            std::vector<ComponenteFortementeConexa>* obterComponentesConexas();
     };
 
 }

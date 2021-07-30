@@ -4,6 +4,7 @@
 
 using namespace kosaraju;
 
+Grafo::Grafo() {}
 
 Grafo::Grafo(int numeroDeVertices)
 {
@@ -13,7 +14,7 @@ Grafo::Grafo(int numeroDeVertices)
     this->verticesVisitados = new bool[numeroDeVertices];
     this->zerarVerticesVisitados();
 
-    this->componentesConexas = new std::vector<ComponenteFortementeConexa>();
+    this->componentesConexas = std::vector<ComponenteFortementeConexa>();
 }
 
 void Grafo::DFS(int origem, bool verticesVisitados[], ComponenteFortementeConexa &componente)
@@ -98,7 +99,7 @@ void Grafo::mapearComponentesConexas()
         {
             ComponenteFortementeConexa *componente = new ComponenteFortementeConexa();
             grafoTransposto.DFS(origem, verticesVisitados, *componente);
-            this->componentesConexas->push_back(*componente);
+            this->componentesConexas.push_back(*componente);
         }
     }
 }
@@ -114,10 +115,10 @@ void Grafo::imprimirComponentes()
 {
     std::vector<ComponenteFortementeConexa>::iterator i;
 
-    for (i = this->componentesConexas->begin(); i != this->componentesConexas->end(); i++)
+    for (i = this->componentesConexas.begin(); i != this->componentesConexas.end(); i++)
     {
         std::vector<int>::iterator j;
-        for (j = i->vertices->begin(); j != i->vertices->end(); j++)
+        for (j = i->vertices.begin(); j != i->vertices.end(); j++)
         {
             std::cout << (*j) << " ";
         }
@@ -125,4 +126,24 @@ void Grafo::imprimirComponentes()
         std::cout << std::endl;
     }
 
+}
+
+std::vector<ComponenteFortementeConexa>* Grafo::obterComponentesConexas()
+{
+    return &(this->componentesConexas);
+}
+
+int Grafo::obterNumeroVertices()
+{
+    return this->numeroDeVertices;
+}
+
+std::list<int> * Grafo::obterListaDeEntrada()
+{
+    return this->listaDeEntrada;
+}
+
+std::list<int> * Grafo::obterListaDeSaida()
+{
+    return this->listaDeSaida;
 }
