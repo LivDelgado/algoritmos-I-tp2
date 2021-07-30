@@ -23,4 +23,4 @@ As m linhas seguintes: *<origem (u)> <destino (v)>*
 _Caso especial: se o grafo só tiver um vértice, o resultado final é 0._
 
 ### Como o passo 2 é implementado?
-Verificamos se uma componente tem entrada/saída se algum dos seus vértices tem uma aresta de entrada/saída que entra/sai **_da componente_**.
+Verificamos que uma componente tem entrada/saída se algum dos seus vértices tem uma aresta de entrada/saída que entra/sai **_da componente_**.
