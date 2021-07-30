@@ -3,15 +3,15 @@
 
 A companhia deseja saber qual o número mínimo de rotas que deverá adicionar a sua rede aérea para fazer com que um dado aeroporto de origem possa atingir qualquer aeroporto de destino
 
-A rede aérea contém um conjunto de aeroportos $A = \{1, 2..., n\}$ operados pela companhia e um conjunto de rotas direcionadas $R = \{r1, r2, . . . , rm\}$, tal que $ri = (u, v) ∈ A × A$. 
+A rede aérea contém um conjunto de aeroportos A = \{1, 2..., n\} operados pela companhia e um conjunto de rotas direcionadas R = \{r1, r2, . . . , rm\}, tal que ri = (u, v) ∈ A × A. 
 
-Cada item de R é composto de um aeroporto de origem $u$ e um aeroporto de destino $v$. **Seu trabalho será encontrar o menor número de rotas adicionais $\{rm+1 . . . \}$ que a companhia deve prover para que seus passageiros possam alcançar qualquer outro aeroporto.** Note que poderá ser necessário para os passageiros fazer várias escalas até chegar no seu destino final.
+Cada item de R é composto de um aeroporto de origem _u_ e um aeroporto de destino _v_. **Seu trabalho será encontrar o menor número de rotas adicionais \{rm+1 . . . \} que a companhia deve prover para que seus passageiros possam alcançar qualquer outro aeroporto.** Note que poderá ser necessário para os passageiros fazer várias escalas até chegar no seu destino final.
 
 ## Entrada
 
 Primeira linha: *<número de aeroportos (n)> <número de rotas (m)>*
 
-As $m$ linhas seguintes: *<origem (u)> <destino (v)>*
+As m linhas seguintes: *<origem (u)> <destino (v)>*
 
 # Descrição da Solução
 ## Estratégia
