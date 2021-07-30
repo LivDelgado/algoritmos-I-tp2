@@ -4,6 +4,7 @@
 #include <list>
 #include <stack>
 #include <vector>
+#include <algorithm>
 
 #include "kosaraju/scc.hpp"
 
@@ -28,7 +29,7 @@ namespace kosaraju
             Grafo(int numeroDeVertices);
             Grafo();
 
-            void adicionarAresta(int origem, int destino);
+            bool adicionarAresta(int origem, int destino);
             void mapearComponentesConexas();
             void imprimirComponentes();
 

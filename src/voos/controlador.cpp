@@ -34,8 +34,9 @@ void Controlador::inserirArestasParaFormarDAG()
         
         if (origem != -1 && destino != -1)
         {
-            this->grafo.adicionarAresta(origem, destino);
-            numeroNovosVoosAdicionados++;
+            bool adicionou = this->grafo.adicionarAresta(origem, destino);
+            if (adicionou)
+                numeroNovosVoosAdicionados++;
             origem = destino = -1;
         }
     }

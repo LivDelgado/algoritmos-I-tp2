@@ -51,10 +51,14 @@ Grafo Grafo::obterGrafoTransposto()
     return grafoTransposto;
 }
 
-void Grafo::adicionarAresta(int origem, int destino)
+bool Grafo::adicionarAresta(int origem, int destino)
 {
+    if (std::find(listaDeSaida[origem].begin(), listaDeSaida[origem].end(), destino) != listaDeSaida[origem].end())
+        return false;
+
     listaDeSaida[origem].push_back(destino);
     listaDeEntrada[destino].push_back(origem);
+    return true;
 }
 
 void Grafo::percorrerOrdemGrafo(int origem, bool verticesVisitados[], std::stack<int> &pilhaVerticesConectadosAVerticesJaExplorados)
