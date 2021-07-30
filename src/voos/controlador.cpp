@@ -15,39 +15,38 @@ bool Controlador::componenteTemVertice(kosaraju::ComponenteFortementeConexa comp
 
 bool Controlador::componenteTemEntrada(kosaraju::ComponenteFortementeConexa componente)
 {
-    bool temEntrada = false;
     std::list<int> *listaDeEntrada = this->grafo.obterListaDeEntrada();
+
     for (int vertice : componente.vertices)
     {
         for (int verticeEntrada : listaDeEntrada[vertice])
         {
             if (!componenteTemVertice(componente, verticeEntrada))
             {
-                temEntrada = true;
+                return true;
             }
         }
     }
 
-    return temEntrada;
+    return false;
 }
 
 bool Controlador::componenteTemSaida(kosaraju::ComponenteFortementeConexa componente)
 {
-    bool temSaida = false;
-
     std::list<int> *listaDeSaida = this->grafo.obterListaDeSaida();
+
     for (int vertice : componente.vertices)
     {
         for (int verticeSaida : listaDeSaida[vertice])
         {
             if (!componenteTemVertice(componente, verticeSaida))
             {
-                temSaida = true;
+                return true;
             }
         }
     }
 
-    return temSaida;
+    return false;
 }
 
 int Controlador::obterMaiorNumeroAeroportos()
