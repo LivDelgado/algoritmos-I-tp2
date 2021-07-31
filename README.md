@@ -16,7 +16,7 @@ As m linhas seguintes: *<origem (u)> <destino (v)>*
 # Descrição da Solução
 ## Estratégia
 1. Utilizar um algoritmo para encontrar as componentes fortemente conexas do grafo. Nesse caso, eu utilizei o algoritmo de Kosaraju.
-2.  Então, consideramos cada Componente como um vértice, e buscamos aquelas que **não tem** aresta de entrada e/ou de saída.   
+2.  Então, consideramos cada Componente como um vértice, e buscamos aqueles que **não tem** aresta de entrada e/ou de saída.   
 3.  O resultado será o número máximo entre o número de vértices sem aresta de entrada e o número de vértices sem aresta de saída.
     Considerando aqui os vértices do grafo condensado!
 
