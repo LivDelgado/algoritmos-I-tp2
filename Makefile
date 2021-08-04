@@ -7,6 +7,7 @@ CXXFLAGS = -std=c++11 -g -Wall -I include/
 INCLUDE_FOLDER = -I include/ -I third_party/
 OBJ_FOLDER = ./obj/
 SRC_FOLDER = ./src/
+TEST_OUTPUT = .results
 
 SRCEXT := cpp
 
@@ -26,3 +27,6 @@ all: $(OBJ)
 
 clean:
 	@rm -rf $(OBJ_FOLDER)* $(TARGET)
+
+test: $(TARGET)
+	@bash run_tests.sh ./$(TARGET) $(TEST_OUTPUT)
